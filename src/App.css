@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+div {
+  border: 1px solid grey;
+  margin: 4px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.catinfo {
+  margin: 4px;
+  border-bottom: 1px solid black;
+}
+
+.catlist {
+  float: left;
+  width: 40%;
+}
+
+.jelly {
+  float: right;
+  width: 40%;
+}
