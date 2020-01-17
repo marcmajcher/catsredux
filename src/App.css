@@ -60,3 +60,7 @@ li {
   float: right;
   width: 40%;
 }
+
+.jelly-true {
+  background-color: green;
+}

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import Cat from './Cat';
+import { connect } from 'react-redux';
 
-export default class CatList extends Component {
+class CatList extends Component {
   render() {
     return (
       <div>
-        CatList: 
+        CatList:
         <ul>
-          {this.props.cats.map(cat => <Cat cat={cat} key={cat.name}></Cat>)}
+          {this.props.cats.map(cat => (
+            <Cat cat={cat} key={cat.name}></Cat>
+          ))}
         </ul>
       </div>
     );
   }
 }
+
+export default connect(store => store)(CatList);

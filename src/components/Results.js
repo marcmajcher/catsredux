@@ -5,8 +5,12 @@ export default class Results extends Component {
   render() {
     return (
       <div>
-        RESULTS!
-        <Jellicizer results={this.props.results}></Jellicizer>
+        <h2>RESULTS!</h2>
+        <ul>
+          {this.props.results.map(cat => (
+            <Jellicizer cat={cat}></Jellicizer>
+          ))}
+        </ul>
       </div>
     );
   }

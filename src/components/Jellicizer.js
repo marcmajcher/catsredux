@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Jellicizer extends Component {
+class Jellicizer extends Component {
+  jellicize = () => {
+    this.props.dispatch({
+      type: 'JELLICIZE',
+      id: this.props.cat.id,
+    });
+  };
+
   render() {
-    return <ul>
-      {this.props.results.map(cat => <li key={cat.name}>{cat.name}
-      <input type="checkbox"></input>
-      </li>)}
-    </ul>;
+    return (
+      <li key={this.props.cat.name}>
+        {this.props.cat.name}
+        <input type="checkbox" onChange={this.jellicize}></input>
+      </li>
+    );
   }
 }
+
+export default connect(store => store)(Jellicizer);

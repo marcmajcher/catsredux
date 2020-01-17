@@ -2,11 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const catstore = {
+  cats: [
+    { id: 1, name: 'kitty', jelly: false },
+    { id: 2, name: 'green kitty', jelly: false },
+    { id: 3, name: 'ellie', jelly: true },
+    { id: 4, name: 'deborah', jelly: false },
+    { id: 5, name: 'pebble ephram', jelly: false },
+    { id: 6, name: 'marigold', jelly: false },
+  ],
+  dogs: [],
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function reducer(state = catstore, action) {
+  // {
+  //   type: 'JELLICIZE',
+  //   id: catId
+  // }
+
+  switch (action.type) {
+    case 'JELLICIZE':
+      const cats = state.cats.map(cat => {
+        if (action.id === cat.id) {
+          cat.jelly = true;
+        }
+        return cat;
+      });
+      return { ...state, cats };
+    default:
+      return state;
+  }
+}
+let store = createStore(reducer, catstore);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
