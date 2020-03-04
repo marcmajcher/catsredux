@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Cat from './Cat';
-import { connect } from 'react-redux';
 
-class CatList extends Component {
+export default class CatList extends Component {
   render() {
     return (
       <div>
@@ -17,4 +16,3 @@ class CatList extends Component {
   }
 }
 
-export default connect(store => store)(CatList);

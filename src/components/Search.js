@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Results from './Results';
-import { connect } from 'react-redux';
 
-class Search extends Component {
+export default class Search extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,6 +21,7 @@ class Search extends Component {
           Search
         </button>
         <Results
+          jellicize={this.props.jellicize}
           results={
             this.state.query
               ? this.props.cats.filter(e => e.name.includes(this.state.query))
@@ -32,5 +32,3 @@ class Search extends Component {
     );
   }
 }
-
-export default connect(store => store)(Search);
