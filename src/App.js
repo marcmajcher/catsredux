@@ -16,20 +16,26 @@ const catsObj = {
 };
 
 const App = () => {
-  const [cats, setCats]= useState(catsObj)
+  const [cats, setCats] = useState(catsObj);
 
-function jellicize() {
-  setCats()
-}
+  function jellicize(id) {
+    const jellyCat = catsObj.cats.map(cat => {
+      if (id === cat.id) {
+        cat.jelly = true;
+      }
+      return cat;
+    });
+    setCats({ ...cats, jellyCat });
+  }
 
   return (
     <div className="App">
       <header>CATS!</header>
       <section className="catlist">
-        <CatList cats={cats}></CatList>
+        <CatList cats={catsObj.cats}></CatList>
       </section>
       <section className="jelly">
-        <Search jellicize={jellicize} cats={cats}></Search>
+        <Search jellicize={jellicize} cats={catsObj.cats}></Search>
       </section>
     </div>
   );
